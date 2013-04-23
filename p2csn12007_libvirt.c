@@ -1,3 +1,5 @@
+/*libvirt program */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <libvirt/libvirt.h>
@@ -5,7 +7,7 @@ int main(int argc, char *argv[])
 {
     virConnectPtr conn;
     virDomainPtr vdp;
-    int i=-1;
+    int val=-1;
 	int choice;	
     char *host;
     conn = virConnectOpen("xen:///");
@@ -23,8 +25,8 @@ int main(int argc, char *argv[])
 		if(choice==1)
 		{
 			/* suspend*/	    
-			i=virDomainSuspend(vdp);
-			if(i==0)
+			val=virDomainSuspend(vdp);
+			if(val==0)
 			{
 				printf("Success");
 			}else{
@@ -34,8 +36,8 @@ int main(int argc, char *argv[])
 		else if(choice==2)
 		{
 			/*resume*/
-			i=virDomainResume(vdp);
-			if(i==0)
+			val=virDomainResume(vdp);
+			if(val==0)
 			{
 				printf("Success");
 			}else{
@@ -45,8 +47,8 @@ int main(int argc, char *argv[])
 		else if(choice==3)
 		{
 			/*shutdown*/
-			i=virDomainDestroy(vdp);
-			if(i==0)
+			val=virDomainDestroy(vdp);
+			if(val==0)
 			{
 				printf("Success");
 			}else{
@@ -56,8 +58,8 @@ int main(int argc, char *argv[])
 		else if(choice==4)
 		{
 			/*start*/
-			i=virDomainCreate(vdp);
-			if(i==0)
+			val=virDomainCreate(vdp);
+			if(val==0)
 			{
 				printf("Success");
 			}else{
